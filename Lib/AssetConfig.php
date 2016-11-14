@@ -106,7 +106,7 @@ class AssetConfig {
  */
 	public static function clearBuildTimeStamp() {
 		// @codingStandardsIgnoreStart
-		@unlink(TMP . self::BUILD_TIME_FILE);
+		@unlink(APP . 'Config' . DS . self::BUILD_TIME_FILE);
 		// @codingStandardsIgnoreEnd
 		self::clearCachedBuildTime();
 	}

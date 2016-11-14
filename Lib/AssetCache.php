@@ -210,8 +210,8 @@ class AssetCache {
 		if ($cachedConfig) {
 			$data = Cache::read(AssetConfig::CACHE_BUILD_TIME_KEY, AssetConfig::CACHE_CONFIG);
 		}
-		if (empty($data) && file_exists(TMP . AssetConfig::BUILD_TIME_FILE)) {
-			$data = file_get_contents(TMP . AssetConfig::BUILD_TIME_FILE);
+		if (empty($data) && file_exists(APP . 'Config' . DS . AssetConfig::BUILD_TIME_FILE)) {
+			$data = file_get_contents(APP . 'Config' . DS . AssetConfig::BUILD_TIME_FILE);
 			if ($data) {
 				$data = unserialize($data);
 			}
@@ -230,8 +230,8 @@ class AssetCache {
 			Cache::write(AssetConfig::CACHE_BUILD_TIME_KEY, $data, AssetConfig::CACHE_CONFIG);
 		}
 		$data = serialize($data);
-		file_put_contents(TMP . AssetConfig::BUILD_TIME_FILE, $data);
-		chmod(TMP . AssetConfig::BUILD_TIME_FILE, 0644);
+		file_put_contents(APP . 'Config' . DS . AssetConfig::BUILD_TIME_FILE, $data);
+		chmod(APP . 'Config' . DS . AssetConfig::BUILD_TIME_FILE, 0644);
 	}
 
 /**
